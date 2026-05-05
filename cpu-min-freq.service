@@ -1,0 +1,11 @@
+[Unit]
+Description=Lower scaling_min_freq to hardware minimum (amd-pstate-epp)
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo 417000 | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
